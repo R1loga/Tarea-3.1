@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tarea_3._1.ViewModels"
+             x:Class="Tarea_3._1.Views.ProductosView"
+             Title="Productos">
+
+    <ContentPage.BindingContext>
+        <local:ProductoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="10">
+                <Image
+                    x:Name="CapturedImage"
+                    Source="{Binding ProductoSeleccionado.Foto}"
+                    BackgroundColor="#839192"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Aspect="AspectFit" />
+
+                <Button
+                    Text="Tomar foto"
+                    BackgroundColor="Green"
+                    Clicked="OnTakePhotoClicked"
+                    HorizontalOptions="Center" />
+
+                <Entry Placeholder="URL de la foto" Text="{Binding ProductoSeleccionado.Foto}" IsReadOnly="True" />
+
+                <Button
+                    Text="Guardar foto"
+                    BackgroundColor="#3949ab"
+                    Clicked="OnSavePhotoClicked" />
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="10">
+                <Entry Placeholder="Nombre" Text="{Binding ProductoSeleccionado.Nombre}" />
+                <Entry Placeholder="Descripción" Text="{Binding ProductoSeleccionado.Descripcion}" />
+                <Entry Placeholder="Precio" Text="{Binding ProductoSeleccionado.Precio}" Keyboard="Numeric" />
+
+                <Button
+                    Text="Crear"
+                    Command="{Binding CrearProductoCommand}"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    Padding="10"
+                    Margin="10"
+                    FontSize="16"
+                    CornerRadius="5"/>
+
+
+                <Button Text="Ver Productos" Clicked="OnVerProductosClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
